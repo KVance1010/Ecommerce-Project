@@ -155,4 +155,5 @@ public class QueryMethodsTest {
 			System.out.println(p.getProductName());
 		});    
 	}
+	
 }

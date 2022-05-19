@@ -8,6 +8,10 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.NamedNativeQueries;
+import javax.persistence.NamedNativeQuery;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
@@ -23,6 +27,32 @@ import lombok.NoArgsConstructor;
 @Entity
 @NoArgsConstructor
 @AllArgsConstructor
+@NamedQueries({
+	@NamedQuery(
+			name = "Product.findByPrice",
+			query = "SELECT p FROM Product p WHERE p.price = ?1"),
+	@NamedQuery(
+			name = "Product.findAllOrderByNameDesc",
+			query = "SELECT p fROM Product p ORDER BY p.productName DESC")
+	})
+// use this for one more queries for multiple
+//@NamedQuery(
+//		name = "Product.findByPrice",
+//		query = "SELECT p FROM Product p WHERE p.price = ?1")
+
+@NamedNativeQueries({
+
+	@NamedNativeQuery(
+		    name = "Product.findByDescription",
+		    query = "SELECT * FROM product p WHERE p.product_description = ?1",
+		    resultClass = Product.class
+		),
+	@NamedNativeQuery(
+		    name = "Product.findAllOrderByNameASC",
+		    query = "SELECT * FROM product p ORDER BY p.product_name ASC",
+		    resultClass = Product.class
+		)
+})
 @Table (name = "product", schema = "ecommerce", uniqueConstraints =  { 
 		@UniqueConstraint(name = "sku_unique", columnNames = "sku_num")})
 public class Product {
