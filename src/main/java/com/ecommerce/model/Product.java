@@ -25,8 +25,6 @@ import lombok.NoArgsConstructor;
 
 @Data
 @Entity
-@NoArgsConstructor
-@AllArgsConstructor
 @NamedQueries({
 	@NamedQuery(
 			name = "Product.findByPrice",
