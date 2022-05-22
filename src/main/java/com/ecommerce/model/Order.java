@@ -15,6 +15,7 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.persistence.UniqueConstraint;
 
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
@@ -23,13 +24,14 @@ import lombok.Data;
 
 @Entity
 @Data
-@Table (name = "orders")
+@Table (name = "orders", uniqueConstraints = 
+@UniqueConstraint(name = "order_tracking_number", columnNames = "orderTrackingNumber"))
 public class Order {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	@Column(name = "order_tracking_number", nullable = false, unique = true)
+	@Column(name = "order_tracking_number", nullable = false)  // , unique = true) also works instead of doing it in the @table notation
 	private String orderTrackingNumber;
 	@Column(name = "order_total_quantity", nullable = false)
 	private int totalQuantity;
@@ -43,6 +45,8 @@ public class Order {
 	@Column(name = "order_last_update")
 	@UpdateTimestamp
     private LocalDate lastUpdated;
+	
+	private Long shoppingCartId;
 	
 	// if you just list this on one entity the reference will be unidirectional 
 	@OneToOne (cascade = CascadeType.ALL, mappedBy = "order", fetch = FetchType.LAZY) 
