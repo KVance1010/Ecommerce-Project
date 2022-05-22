@@ -34,28 +34,28 @@ public class ProductRepositoryTest {
 		System.out.println(savedObject.toString());
 	}
 
-	@Test
-	void findByIdMethod() {
-		Long id = 1L;
-		Product product = productRepository.findById(id).get();
-		System.out.println(product);
-	}
-
-	@Test
-	void updateUsingSaveMethod() {
-
-		// find or retrieve an entity by id
-		Long id = 1l;
-		Product product = productRepository.findById(id).get();
-
-		// update entity information
-		product.setProductName("updated product 1");
-		product.setProductDescription("updated product 1 desc");
-
-		// save the updated entity
-		productRepository.save(product);
-
-	}
+//	@Test
+//	void findByIdMethod() {
+//		Long id = 1L;
+//		Product product = productRepository.findById(id).get();
+//		System.out.println(product);
+//	}
+//
+//	@Test
+//	void updateUsingSaveMethod() {
+//
+//		// find or retrieve an entity by id
+//		Long id = 1l;
+//		Product product = productRepository.findById(id).get();
+//
+//		// update entity information
+//		product.setProductName("updated product 1");
+//		product.setProductDescription("updated product 1 desc");
+//
+//		// save the updated entity
+//		productRepository.save(product);
+//
+//	}
 
 	@Test
 	void saveAllMethod() {
@@ -79,60 +79,60 @@ public class ProductRepositoryTest {
 		productRepository.saveAll(List.of(product, product2));
 	}
 	
-	@Test
-	void findAllMethod() {
-		List <Product> products = productRepository.findAll();
-		products.forEach((p)-> {
-			System.out.println(p.getProductName());
-		});
-	}
-	
-	@Test
-	void deleteByIdMethod() {
-		Long id = 3L;
-		productRepository.deleteById(id);
-		
-	}
-	
-	@Test
-	void deleteMethod() {
-		// find an entity by id
-		Long id = 2L;
-		Product product = productRepository.findById(id).get();
-		//delete the entity
-		productRepository.delete(product);
-	}
-	
-	
-	@Test
-	void deleteAllMethod() {
-		productRepository.deleteAll();
-	}
-	
-	@Test
-	void deleteAllByIdMethod() {
-		// find an entity by id
-		Long id1 = 11L;
-		Long id2 = 12L;
-		
-		Product product = productRepository.findById(id1).get();
-		Product product1 = productRepository.findById(id2).get();
-		//delete the entity
-		productRepository.deleteAll(List.of(product,product1));
-	}
-	
-	@Test
-	void countMethod() {
-		Long count = productRepository.count();
-		System.out.println(count);
-	}
-	
-	@Test
-	void existByIdMethod() {
-		Long id = 1L;
-		boolean results = productRepository.existsById(id);
-		System.out.println(results);
-	}
+//	@Test
+//	void findAllMethod() {
+//		List <Product> products = productRepository.findAll();
+//		products.forEach((p)-> {
+//			System.out.println(p.getProductName());
+//		});
+//	}
+//	
+//	@Test
+//	void deleteByIdMethod() {
+//		Long id = 3L;
+//		productRepository.deleteById(id);
+//		
+//	}
+//	
+//	@Test
+//	void deleteMethod() {
+//		// find an entity by id
+//		Long id = 2L;
+//		Product product = productRepository.findById(id).get();
+//		//delete the entity
+//		productRepository.delete(product);
+//	}
+//	
+//	
+//	@Test
+//	void deleteAllMethod() {
+//		productRepository.deleteAll();
+//	}
+//	
+//	@Test
+//	void deleteAllByIdMethod() {
+//		// find an entity by id
+//		Long id1 = 11L;
+//		Long id2 = 12L;
+//		
+//		Product product = productRepository.findById(id1).get();
+//		Product product1 = productRepository.findById(id2).get();
+//		//delete the entity
+//		productRepository.deleteAll(List.of(product,product1));
+//	}
+//	
+//	@Test
+//	void countMethod() {
+//		Long count = productRepository.count();
+//		System.out.println(count);
+//	}
+//	
+//	@Test
+//	void existByIdMethod() {
+//		Long id = 1L;
+//		boolean results = productRepository.existsById(id);
+//		System.out.println(results);
+//	}
 	
 
 }
